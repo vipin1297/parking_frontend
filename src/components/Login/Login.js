@@ -27,15 +27,13 @@ class Login extends Component {
             axios.post(config.url+'login/',loginData).then((response)=>{
             console.log(response.data);
             localStorage.setItem("regId",response.data.regId);
-            if(response.data.roleName =="V"){
-               this.props.history.push('/vipSlotRelease');
-            }else if(response.data.roleName =="E"){
-                this.props.history.push('/userSlotBooking')
+            if(response.data.roleName =="E"){
+               this.props.history.push('/userSlotBooking');
+            }else {
+                this.props.history.push('/vipSlotRelease')
 
             }
-            else{
-                console.log("errpr");
-            }
+
 
             
         }).catch((error)=>{ 
@@ -66,7 +64,7 @@ class Login extends Component {
                                  
              </form>
              </div>
-                        <Link className="nav-item nav-link login-tag-title" to='/registeration'>New User? Register</Link>
+                        <Link className="nav-item nav-link login-tag-title" to='/registration'>New User? Register</Link>
                     </div>
           </div>
         </div>

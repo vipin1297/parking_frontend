@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import VipSlotRelease from './components/VipSlotRelease/VipSlotRelease';
 import UserSlotBooking from './components/UserSlotBooking/UserSlotBooking';
+import UserRequest from './components/UserRequest/UserRequest';
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
        <Route path="/login" component={Login}/>
        <Route path="/vipSlotRelease" component={VipSlotRelease}/>
        <Route path="/userSlotBooking" component={UserSlotBooking}/>
+       <Route path="/userRequest" component={UserRequest}/>
      </HashRouter>
 
       </div>

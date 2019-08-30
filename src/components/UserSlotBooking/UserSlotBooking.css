@@ -135,8 +135,8 @@
     border-radius: 5px;
     animation-duration: 300ms;
     animation-fill-mode: both;
-    height: 100px;
-    width: 60px;
+    height: 50px;
+    width: 100px;
   }
   .seat label:before {
     content: "";
@@ -234,4 +234,7 @@
   }
   .btn5{
     margin-left:1000px;
+}
+.container-slot{
+  display:inline-flex !important;
 }
