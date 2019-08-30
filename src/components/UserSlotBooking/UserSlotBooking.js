@@ -70,12 +70,9 @@ class userSlotBooking extends Component {
                 <button   id="btn5" className="btn btn-outline-primary  btn5 " onClick={this.handleLogout}>Logout</button>
                 <button   id="btn6" className="btn btn-outline-primary  btn6 " onClick={this.handleUserRequest}>userRequest</button>
                 <div>
-                    <div>
-                        <h1 align="left" className="user-title" >Welcome:</h1>
-                    </div>
 
                     <div>
-                        <h1 align="left" className="user-title" >Employee Id:</h1>
+                        <h1 align="left" className="user-title" >List Of Available slots</h1>
                     </div>
 
                     <div>
