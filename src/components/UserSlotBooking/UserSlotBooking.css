@@ -47,7 +47,7 @@
     font-family: "Arial Narrow", Arial, sans-serif;
     display: block;
     position: absolute;
-    background: orange;
+    background: rgb(97, 243, 243);
     color: white;
     top: 50%;
     transform: translate(0, -50%);
@@ -62,7 +62,7 @@
 
    .slot-title{
     margin-bottom: 3% !important;
-    border-bottom: 4px solid orange;
+    border-bottom: 4px solid rgb(247, 74, 88);
     width: 93%;
     margin: 0 auto;
     padding-bottom: 10px;
@@ -99,7 +99,7 @@
     opacity: 0;
   }
   .seat input[type=checkbox]:checked + label {
-    background:#7CFC00;
+    background:rgb(97, 243, 243);
     -webkit-animation-name: rubberBand;
     animation-name: rubberBand;
     animation-duration: 300ms;
@@ -131,12 +131,12 @@
     font-weight: bold;
     line-height: 1.5rem;
     padding: 4px 0;
-    background:orange;
+    background:rgb(247, 74, 88);
     border-radius: 5px;
     animation-duration: 300ms;
     animation-fill-mode: both;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 60px;
   }
   .seat label:before {
     content: "";
@@ -228,3 +228,10 @@
   .book-btn{
       margin-left: 100px;
   }
+
+  ol li {
+    float: none !important;
+  }
+  .btn5{
+    margin-left:1000px;
+}

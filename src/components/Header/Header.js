@@ -1,22 +1,24 @@
 import React,{Component} from 'react';
+import one from './one.png';
 import './Header.css';
-import ing from "./ing.jpg";
-
 
 class Header extends Component{
+
+
     render(){
+        
         return(
             <div>
-                <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-            <div class="header">
-            <a href="#ing" className="logo"> HCL PARKING SLOT </a>
-            <div class="header-right">
-                <a class="active"><select>
-                    <option value="en">ENGLISH</option>
-                    <option value="sp">SPANISH</option>
-                    </select></a>
+                <div className="main">
+                    <ul>
+                        <li><img src={one} width="100px" height="100px"/></li>
+                        <li className="titlespace"><h2 className="title">HCL PARKING LOT</h2></li>
+                        <li className="selectDropDown"> <select  onChange={this.handleSelect}>
+                        <option value="en">ENGLISH</option>
+                        <option value="sp">SPANISH</option>
+                    </select></li>
+                    </ul>
                 </div>
-            </div>
             </div>
         )
     }

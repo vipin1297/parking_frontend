@@ -33,13 +33,16 @@ class userSlotBooking extends Component {
           });
         });
       }
-
+      handleLogout=()=>{
+        this.props.history.push("/login");
+    }
 
 
     render() {
 
         return (
             <div>
+                <button   id="btn5" className="btn btn-outline-primary  btn5 " onClick={this.handleLogout}>Logout</button>
                 <div>
                     <div>
                         <h1 align="left" className="user-title" >Welcome:</h1>

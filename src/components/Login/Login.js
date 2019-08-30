@@ -1,37 +1,40 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import config from '../../config.json';
+import {Link} from 'react-router-dom';
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            formData: {
-                userName: '',
+            loginData: {
+                mobileNo: '',
                 password: ''
             }
         }
     }
 
     handleChange = (event) => {
-        const { formData } = this.state;  
-        formData[event.target.name] = event.target.value;
-        this.setState({ formData });
+        const { loginData } = this.state;  
+        loginData[event.target.name] = event.target.value;
+        this.setState({ loginData });
     }
 
      handleSubmit = (event) => {
         event.preventDefault();
-        const { formData } = this.state;
-        console.log(formData);
-            axios.post('',formData).then((response)=>{
+        const { loginData } = this.state;
+        console.log(loginData);
+            axios.post(config.url+'login/',loginData).then((response)=>{
             console.log(response.data);
-            if(response.data.regId=="1"){
-                this.props.history.push('/');
-            }else if(response.data.regId=="2"){
-                this.props.history.push('/')
+            localStorage.setItem("regId",response.data.regId);
+            if(response.data.roleName =="V"){
+               this.props.history.push('/vipSlotRelease');
+            }else if(response.data.roleName =="E"){
+                this.props.history.push('/userSlotBooking')
 
-            }else{
-                this.props.history.push('/')
+            }
+            else{
+                console.log("errpr");
             }
 
             
@@ -44,26 +47,26 @@ class Login extends Component {
         return (
         
             <div >
-                 <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">login</h5>
-            <form class="form-signin">
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" onChange={this.handleChange} name="userName" class="form-control" placeholder="enter thr user name"required autofocus>
-            </input>    <label for="inputEmail">Email address</label>
+                 <div className="row">
+      <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div className="card card-signin my-5">
+          <div className="card-body">
+            <h5 className="card-title text-center">login</h5>
+            <form className="form-signin">
+              <div className="form-label-group">
+                <input type="number" id="mobileNo" onChange={this.handleChange} name="mobileNo" className="form-control" placeholder="enter the mobile number"required autofocus>
+            </input>    <label for="inputEmail">Mobile Number</label>
               </div>
 
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" onChange={this.handleChange} name="password"  class="form-control" placeholder="enter the password" required>
+              <div className="form-label-group">
+                <input type="password" id="inputPassword" onChange={this.handleChange} name="password"  className="form-control" placeholder="enter the password" required>
           </input>      <label for="inputPassword">Password</label>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" onClick={this.handleSubmit}type="submit">Sign in</button>
+              <button  id="btn1" className="btn btn-lg btn-primary btn-block text-uppercase" onClick={this.handleSubmit}type="submit">Sign in</button>
                                  
              </form>
              </div>
-                        <Link className="nav-item nav-link login-tag-title" to='/register'>New User? Register</Link>
+                        <Link className="nav-item nav-link login-tag-title" to='/registeration'>New User? Register</Link>
                     </div>
           </div>
         </div>

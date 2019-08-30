@@ -1,11 +1,15 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import config from '../../config.json';
+import swal from 'sweetalert';
+import './VipSlotRelease.css';
 
 class VipSlotRelease extends Component{
     constructor(props){
         super(props);
         this.state={
             releaseData:{
+                registrationId:localStorage.getItem("regId"),
                 fromDate:'',
                 toDate:''
             }
@@ -16,17 +20,23 @@ class VipSlotRelease extends Component{
         releaseData[event.target.name] = event.target.value;
         this.setState({ releaseData });
     }
-    handleReleaseSlot=()=>{
+    handleReleaseSlot=(e)=>{
+        e.preventDefault();
         const { releaseData } = this.state;
-            axios.post('',releaseData).then((response)=>{
+            axios.post(config.url+'release/',releaseData).then((response)=>{
             console.log(response.data);
+            swal(response.data.message);
         }).catch((error)=>{ 
             console.log(error);        
         });
     }
+    handleLogout=()=>{
+        this.props.history.push("/login");
+    }
     render(){
         return(
             <div>
+                <button id="btn4"  className="btn btn-outline-primary  btn4 " onClick={this.handleLogout}>Logout</button>
                 <h4>VIP SLOT RELEASE DATE</h4>
  <div className="form1">
                 <div className="container">

@@ -1,6 +1,9 @@
 import React,{Component} from 'react';
 import './Registration.css';
 import axios from 'axios';
+import config from '../../config.json';
+import swal from 'sweetalert';
+import {Link} from 'react-router-dom';
 
 class Registration extends Component{
     constructor(props){
@@ -10,7 +13,7 @@ class Registration extends Component{
                 userName:'',
                 password:'',
                 mobileNumber:'',
-                overallExperience:'',
+                overAllExperience:'',
                 hclExperience:''
             }
         }
@@ -20,10 +23,13 @@ class Registration extends Component{
         registerData[event.target.name] = event.target.value;
         this.setState({ registerData });
     }
-    handleRegistration=()=>{
+    handleRegistration=(e)=>{
+        e.preventDefault();
         const { registerData } = this.state;
-            axios.post('',registerData).then((response)=>{
+            axios.post(config.url+'register/',registerData).then((response)=>{
             console.log(response.data);
+            swal('Registration successful!')
+            this.props.history.push('/login');
         }).catch((error)=>{ 
             console.log(error);        
         });
@@ -64,7 +70,7 @@ class Registration extends Component{
                                 <label>OVER ALL EXPERIENCE:</label>
                              </div>
                             <div className="col-75">
-                                <input type="number" id="overallExperience" name="overallExperience" placeholder="please enter the over all exprience.." onChange={this.handleChange}/>
+                                <input type="number" id="overAllExperience" name="overAllExperience" placeholder="please enter the over all exprience.." onChange={this.handleChange}/>
                             </div>
                      </div>
                      <div className="row">
@@ -78,8 +84,9 @@ class Registration extends Component{
                      
                      
                     <div className="row">
-                        <button className="btn btn-outline-primary btn3" id="btn3" onClick={this.handleRegistration}>Register</button>
+                        <button className="btn btn-outline-primary btn3" id="btn2" onClick={this.handleRegistration}>Register</button>
                      </div>
+                     <Link className="nav-item nav-link login-tag-title" to='/login'>AllReady Registered? login</Link>
                 </form>
             </div>
             </div>
