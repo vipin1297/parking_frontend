@@ -1,28 +1,23 @@
 pipeline {
-    agent any 
-    tools {nodejs "NODEJS"} // NODEJS is the variable which is mentioned in global tool configurations
-    stages {
-        stage('checkout') { 
-            steps {
-                git url: 'https://github.com/devopsdemo-in/parking_frontend'
+    agent any
+        stages{
+            stage('Git Checkout'){
+                steps{
+                    git 'https://github.com/Anjuna661/INGFAV_UI.git'
+                }
+            }
+            stage('Build') {
+                steps{
+                    sh 'npm install'
+                    sh 'npm run build'
+                    sh 'npm audit fix'
+                }
+            }
+            stage(Deploy){
+                steps{
+                    sh 'cp -r $WORKSPACE/build /var/workspace'
+                    sh 'curl -u admin:admin http://3.17.179.154:8888/manager/reload?path=/build'
+                }
+            }
             }
         }
-        stage('Test') { 
-            steps {
-                sh '''
-                npm install
-                npm run build
-            '''
-            }
-        }
-        stage('Deploy') { 
-            steps {
-                sh '''
-                cd /var/lib/jenkins/workspace/pipeline
-                chmod -R 777 build/
-                cp -rf build/ /opt/apache-tomcat-9.0.26/webapps/
-            '''
-            }
-        }
-    }
-}
