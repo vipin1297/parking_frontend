@@ -3,7 +3,7 @@ pipeline {
         stages{
             stage('Git Checkout'){
                 steps{
-                    git 'https://github.com/Anjuna661/INGFAV_UI.git'
+                    git 'https://github.com/Anjuna661/parking_frontend.git'
                 }
             }
             stage('Build') {
