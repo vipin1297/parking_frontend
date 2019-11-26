@@ -1,4 +1,7 @@
 FROM tomcat:latest
 MAINTAINER Anjuna
-COPY $WORKSPACE/build /usr/local/tomcat/webapps/
-EXPOSE 8888
+
+COPY ./*.war /usr/local/tomcat/webapps/
+
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
