@@ -1,5 +1,5 @@
 FROM anjuna91/apachetomcat
-MAINTAINER Anjuna
+MAINTAINER Vipin
 USER root
 RUN mkdir /usr/local/tomcat/webapps/build/
 RUN mkdir /usr/local/tomcat/webapps/build/static/
